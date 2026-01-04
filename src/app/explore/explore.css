@@ -1,0 +1,78 @@
+.explore-hero {
+  text-align: center;
+  margin: 2rem 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.explore-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.explore-hero p {
+  color: #555;
+  font-size: 1rem;
+}
+
+.explore-grid {
+  padding: 1rem 2rem;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+  background-color: #fff;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card h3 {
+  margin: 0.7rem 0 0.3rem 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.card p {
+  margin: 0.2rem 0 0.7rem 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.card button {
+  padding: 0.4rem 0.8rem;
+  margin: 0.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.card button.view {
+  background-color: #d87b4a; /* similar orange as screenshot */
+  color: white;
+}
+
+.card button.add {
+  background-color: #e0e0e0;
+  color: #333;
+}

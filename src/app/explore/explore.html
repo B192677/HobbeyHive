@@ -1,0 +1,41 @@
+<!-- Hero -->
+<div class="explore-hero">
+  <h1>Welcome to HobbyHive</h1>
+  <p>Choose a hobby you love</p>
+</div>
+
+<!-- Loading -->
+<p *ngIf="loading">Loading workshops...</p>
+
+<!-- Empty -->
+<p *ngIf="!loading && workshops.length === 0">
+  No workshops available
+</p>
+
+<!-- Cards -->
+<div class="explore-grid" *ngIf="!loading && workshops.length > 0">
+  <div class="cards-container">
+
+    <div
+      class="card"
+      *ngFor="let w of workshops"
+    >
+      <img [src]="w.image" alt="{{ w.title }}" />
+
+      <h3>{{ w.title }}</h3>
+
+      <p>{{ w.description }}</p>
+
+      <div style="display:flex; gap:10px; justify-content:center; margin-top:10px;">
+        <button (click)="openWorkshop(w.id)">
+          View
+        </button>
+
+        <button>
+          Add
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

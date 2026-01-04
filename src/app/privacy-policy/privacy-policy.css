@@ -1,0 +1,80 @@
+.privacy-container {
+  padding: 40px;
+  background: #f6f7f8;
+}
+
+.privacy-header h1 {
+  font-size: 42px;
+  font-weight: 800;
+}
+
+.updated {
+  color: #64748b;
+  margin-top: 6px;
+}
+
+.privacy-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.sidebar {
+  position: sticky;
+  top: 100px;
+}
+
+.sidebar h3 {
+  margin-bottom: 12px;
+}
+
+.sidebar a {
+  display: block;
+  margin-bottom: 8px;
+  color: #475569;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sidebar a:hover {
+  color: #137fec;
+}
+
+.content section {
+  margin-bottom: 40px;
+}
+
+.content h2 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.contact-box {
+  background: #137fec;
+  color: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.contact-box button {
+  margin-top: 16px;
+  padding: 12px 24px;
+  background: white;
+  color: #137fec;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .privacy-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}

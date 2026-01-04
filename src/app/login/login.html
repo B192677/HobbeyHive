@@ -1,0 +1,93 @@
+<div class="login-container">
+  <div class="login-card">
+
+    <!-- LEFT : IMAGE -->
+    <div class="login-image">
+      <img src="images/painting.jpg" alt="Workshop Image">
+
+      <div class="overlay">
+        <blockquote>
+          <p>
+            "The capacity to learn is a gift; the ability to learn is a skill;
+            the willingness to learn is a choice."
+          </p>
+        </blockquote>
+
+        <div class="quote-author">
+          <div class="line"></div>
+          <span>Brian Herbert</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT : FORM -->
+    <div class="login-form">
+
+      <div class="branding">
+        <h2>Hobby Hive</h2>
+      </div>
+
+      <div class="welcome-text">
+        <p><b>Please sign in to book or manage workshops.</b></p>
+      </div>
+
+      <!-- ✅ FORM -->
+      <form (ngSubmit)="loginUser()">
+
+        <!-- EMAIL -->
+        <div class="floating-group">
+          <input
+            type="email"
+            [(ngModel)]="email"
+            name="email"
+            placeholder="Email"
+          />
+          <label>Email Address</label>
+        </div>
+
+        <!-- PASSWORD (UI only, backend check ledu ippudu) -->
+        <div class="floating-group password-wrapper">
+          <input
+            [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" name="password" placeholder="Password">
+          
+          
+          <label>Password</label>
+
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="togglePassword()"
+            tabindex="-1"
+          >
+            <span class="material-symbols-outlined">
+              {{ showPassword ? 'visibility_off' : 'visibility' }}
+            </span>
+          </button>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="actions">
+          <label class="remember">
+            <input type="checkbox"> Remember me
+          </label>
+
+          <a class="forgot-password">Forgot password?</a>
+        </div>
+
+        <!-- ✅ SUBMIT BUTTON -->
+        <button type="submit" class="sign-in-btn">
+          Sign In
+        </button>
+      </form>
+
+      <!-- ✅ REGISTER LINK (THIS WILL WORK NOW) -->
+      <div class="signup">
+        <p>
+          Don't have an account?
+          <a routerLink="/register">Create account</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>

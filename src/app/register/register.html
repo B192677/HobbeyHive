@@ -1,0 +1,104 @@
+<div class="login-container">
+  <div class="login-card">
+
+    <!-- LEFT : IMAGE -->
+    <div class="login-image">
+      <img src="images/painting.jpg" alt="Workshop Image">
+
+      <div class="overlay">
+        <blockquote>
+          <p>
+            "The beautiful thing about learning is that nobody can take it away from you."
+          </p>
+        </blockquote>
+
+        <div class="quote-author">
+          <div class="line"></div>
+          <span>B.B. King</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT : FORM -->
+    <div class="login-form">
+
+      <div class="branding">
+        <h2>Hobby Hive</h2>
+      </div>
+
+      <div class="welcome-text">
+        <p><b>Create your account to start exploring workshops.</b></p>
+      </div>
+
+      <form (ngSubmit)="registerUser()">
+
+        <!-- FULL NAME -->
+        <div class="floating-group">
+          <input type="text" [(ngModel)]="name" name="name" required autocomplete="name"/>
+          <label>Full Name</label>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="floating-group">
+          <input type="email" [(ngModel)]="email" name="email" required autocomplete="email"/>
+          <label>Email Address</label>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="floating-group password-wrapper">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            [(ngModel)]="password"
+            name="password"
+            required
+            autocomplete="new-password"
+          />
+          <label>Password</label>
+
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="togglePassword()"
+            tabindex="-1"
+          >
+            <span class="material-symbols-outlined">
+              {{ showPassword ? 'visibility_off' : 'visibility' }}
+            </span>
+          </button>
+        </div>
+
+        <!-- CONFIRM PASSWORD -->
+        <div class="floating-group password-wrapper">
+          <input
+            type="password"
+            [(ngModel)]="confirmPassword"
+            name="confirmPassword"
+            required
+            autocomplete="new-password"
+          />
+          <label>Confirm Password</label>
+        </div>
+
+        <!-- TERMS -->
+        <div class="actions">
+          <label class="remember">
+            <input type="checkbox" [(ngModel)]="acceptedTerms" name="acceptedTerms" />
+            I agree to all the 
+            <a routerLink="/terms" class="terms-link">Terms and Conditions</a>
+            and
+            <a routerLink="/privacypolicy" class="privacy">Privacy Policy</a>
+          </label>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <button type="submit" class="sign-in-btn">Create Account</button>
+      </form>
+
+      <!-- LOGIN LINK -->
+      <div class="signup">
+        <p>Already have an account? <a routerLink="/login">Login</a></p>
+      </div>
+
+    </div>
+  </div>
+</div>

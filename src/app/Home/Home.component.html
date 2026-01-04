@@ -1,0 +1,68 @@
+<section class="hero">
+  <div class="hero-actions">
+    <button routerLink="/login" class="primary-btn">GET STARTED</button>
+  </div>
+</section>
+
+<section class="section-header">
+  <h2>Upcoming Workshops</h2>
+  <p>Browse and book your next learning session</p>
+</section>
+
+<section class="workshop-grid">
+  <div
+    class="workshop-card"
+    *ngFor="let w of workshops"
+    [routerLink]="['/workshop', w.id]"
+  >
+    <div class="badge">{{ w.category }}</div>
+    <h3>{{ w.title }}</h3>
+    <p class="meta">📅 {{ w.date }} • {{ w.time }}</p>
+    <p class="meta">📍 {{ w.location }}</p>
+
+    <div class="card-footer">
+      <span class="seats">{{ w.seats }} seats left</span>
+      <button class="secondary-btn">View Details</button>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- BRAND -->
+    <div class="footer-section brand">
+      <h2>Hobby<span>Hive</span></h2>
+      <p>
+        Discover, learn, and grow through creative hobbies and workshops.
+      </p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/explore">Explore</a></li>
+        <li><a routerLink="/features">Features</a></li>
+        <li><a routerLink="/faq">FAQ</a></li>
+      </ul>
+    </div>
+
+    <!-- SUPPORT -->
+    <div class="footer-section">
+      <h3>Support</h3>
+      <ul>
+        <li><a routerLink="/aboutus">About Us</a></li>
+        <li><a routerLink="/contact">Contact Us</a></li>
+        <li><a routerLink="/privacypolicy">Privacy Policy</a></li>
+        <li><a routerLink="/terms">Terms & Conditions</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 HobbyHive. All rights reserved.
+  </div>
+</footer>

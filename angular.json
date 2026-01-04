@@ -2,7 +2,8 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "90f4e08b-f33e-4e52-b3d2-4909c4f55316"
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -18,12 +19,15 @@
           "options": {
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
+           "assets": [
+  {
+    "glob": "**/*",
+    "input": "public",
+    "output": "/"
+  }
+  
+],
+
             "styles": [
               "src/styles.css"
             ]

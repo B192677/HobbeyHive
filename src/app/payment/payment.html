@@ -1,0 +1,123 @@
+<div class="payment-container">
+
+  <!-- Loading -->
+  <div *ngIf="loading">
+    Loading booking details...
+  </div>
+
+  <!-- Payment Content -->
+  <div *ngIf="!loading && booking">
+
+    <h1>Complete Your Payment</h1>
+    <p class="subtitle">Secure checkout</p>
+
+    <!-- Progress -->
+    <div class="progress-bar">
+      <div class="progress" style="width: 66%"></div>
+    </div>
+
+    <div class="steps">
+      <span>Booking</span>
+      <span class="active">Payment</span>
+      <span>Confirmation</span>
+    </div>
+
+    <div class="payment-main">
+
+      <!-- LEFT : Payment Form -->
+      <div class="card payment-method">
+
+        <h2>Card Details</h2>
+
+        <form (ngSubmit)="payNow()">
+
+          <input
+            type="text"
+            [(ngModel)]="cardName"
+            name="cardName"
+            placeholder="Card Holder Name"
+            required
+          />
+
+          <input
+            type="text"
+            [(ngModel)]="cardNumber"
+            name="cardNumber"
+            placeholder="Card Number"
+            required
+          />
+
+          <div class="expiry-cvc">
+            <input
+              type="text"
+              [(ngModel)]="expiry"
+              name="expiry"
+              placeholder="Expiry MM/YY"
+              required
+            />
+
+            <input
+              type="text"
+              [(ngModel)]="cvv"
+              name="cvv"
+              placeholder="CVV"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="complete-btn"
+            [disabled]="loading"
+          >
+            Pay Now
+          </button>
+
+          <div class="secure-note">
+            <i>🔒</i>
+            Secure SSL encrypted payment
+          </div>
+
+        </form>
+      </div>
+
+      <!-- RIGHT : Summary -->
+      <div class="card summary">
+
+        <div class="image-wrapper">
+          <img
+            src="assets/images/workshop.jpg"
+            alt="Workshop"
+          />
+          <span class="tag">Workshop</span>
+        </div>
+
+        <h3>{{ booking.title }}</h3>
+        <p>Price per ticket</p>
+
+        <div class="cost-breakdown">
+          <div>
+            <span>Subtotal</span>
+            <span>₹{{ booking.price }}</span>
+          </div>
+          <div>
+            <span>Service Fee</span>
+            <span>₹0</span>
+          </div>
+        </div>
+
+        <div class="total">
+          <span>Total</span>
+          <span>₹{{ booking.price }}</span>
+        </div>
+
+        <span class="cancel-policy">
+          Cancellation policy applies
+        </span>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

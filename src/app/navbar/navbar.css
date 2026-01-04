@@ -1,0 +1,45 @@
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: white;
+}
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+nav a {
+  margin-left: 24px;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+nav a.active {
+  color: var(--primary);
+}

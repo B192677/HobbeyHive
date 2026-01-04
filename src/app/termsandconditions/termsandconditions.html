@@ -1,0 +1,85 @@
+<div class="terms-container">
+
+  <!-- Header -->
+  <div class="terms-header">
+    <h1>Terms and Conditions</h1>
+    <p class="updated">Last Updated: October 24, 2023</p>
+    <p class="intro">
+      Please read these terms carefully before using the Workshop Booking System.
+    </p>
+  </div>
+
+  <!-- Content -->
+  <div class="terms-card">
+
+    <section id="introduction">
+      <h2>1. Introduction</h2>
+      <p>
+        By accessing or using our platform, you agree to be bound by these Terms
+        and Conditions and our Privacy Policy.
+      </p>
+    </section>
+
+    <section id="booking">
+      <h2>2. Booking Rules</h2>
+      <ul>
+        <li>Only registered users may book workshops.</li>
+        <li>One seat per workshop unless specified.</li>
+        <li>Bookings are approved by the administrator.</li>
+        <li>Workshops are filled on a first-come basis.</li>
+      </ul>
+    </section>
+
+    <section id="cancellation">
+      <h2>3. Cancellations & Refunds</h2>
+      <div class="highlight">
+        <strong>Standard Policy:</strong><br />
+        Full refund if cancelled 48 hours before the event.
+        50% refund if cancelled within 24-48 hours.
+      </div>
+      <p>
+        No refunds for cancellations within 24 hours of the event.
+      </p>
+    </section>
+
+    <section id="conduct">
+      <h2>4. User Conduct</h2>
+      <ul class="checklist">
+        <li class="ok">Respect all participants and instructors.</li>
+        <li class="ok">Arrive on time and prepared.</li>
+        <li class="bad">No harassment or disruptive behavior.</li>
+      </ul>
+    </section>
+
+    <section id="liability">
+      <h2>5. Liability Disclaimer</h2>
+      <p>
+        We make no guarantees regarding accuracy, availability, or reliability
+        of services provided through this platform.
+      </p>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="terms-footer">
+    <label class="accept-box">
+  <input type="checkbox" [(ngModel)]="accepted" />
+  I have read and agree to the 
+  <a routerLink="/terms" class="terms-link">Terms and Conditions</a>
+</label>
+
+    <div class="actions">
+      <button class="secondary" routerLink="/register">Decline</button>
+      <button
+  class="primary"
+  [disabled]="!accepted"
+  (click)="continueRegistration()"
+>
+  Accept & Continue
+</button>
+
+    </div>
+  </div>
+
+</div>

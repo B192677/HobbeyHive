@@ -1,0 +1,45 @@
+<div class="workshop-details">
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading">
+    Loading workshop details...
+  </div>
+
+  <!-- Workshop Content -->
+  <div *ngIf="!loading && workshop">
+
+    <h1>{{ workshop.title }}</h1>
+
+    <!-- Image (optional, image unte mathrame show) -->
+    <img
+      *ngIf="workshop.imageUrl"
+      [src]="workshop.imageUrl"
+      alt="{{ workshop.title }}"
+    />
+
+    <p class="description">
+      {{ workshop.description }}
+    </p>
+
+    <div class="workshop-info">
+      <p>
+        <strong>Workshop ID:</strong> {{ workshop.id }}
+      </p>
+
+      <p class="price">
+        ₹{{ workshop.price }}
+      </p>
+    </div>
+
+    <button class="book-btn" type="button" (click)="bookWorkshop()">
+      Book Now
+    </button>
+
+  </div>
+
+  <!-- Not Found -->
+  <div *ngIf="!loading && !workshop" class="loading">
+    Workshop not found.
+  </div>
+
+</div>

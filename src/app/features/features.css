@@ -1,0 +1,132 @@
+/* Page container */
+.features-page {
+  min-height: 100vh;
+  padding: 24px;
+  font-family: 'Lexend', sans-serif;
+  background: linear-gradient(180deg, #f8fafc, #f1f5f9);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  margin-bottom: 36px;
+}
+
+.header h1 {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+}
+
+.header h1 span {
+  color: #13a4ec;
+}
+
+.header p {
+  color: #64748b;
+  font-size: 15px;
+  max-width: 90%;
+}
+
+/* Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+/* Feature Card */
+.feature-card {
+  background: linear-gradient(180deg, #ffffff, #f9fafb);
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  /* animation */
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease,
+              border-color 0.25s ease;
+}
+
+/* 🔥 Hover zoom effect */
+.feature-card:hover {
+  transform: scale(1.06);
+  box-shadow: 0 20px 40px rgba(19, 164, 236, 0.15);
+  border-color: rgba(19, 164, 236, 0.3);
+}
+
+/* Icon */
+.icon {
+  width: 44px;
+  height: 44px;
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #13a4ec;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* Material Icons */
+.material-symbols-outlined {
+  font-size: 24px;
+}
+
+/* Card Title */
+.feature-card h3 {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Card Description */
+.feature-card p {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+/* Bottom action */
+.bottom-action {
+  margin-top: auto;
+  padding-top: 36px;
+}
+
+/* Primary Button */
+.primary-btn {
+  width: 100%;
+  height: 54px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #13a4ec, #0ea5e9);
+  color: #ffffff;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(19, 164, 236, 0.35);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(19, 164, 236, 0.45);
+}
+
+.primary-btn:active {
+  transform: scale(0.98);
+}

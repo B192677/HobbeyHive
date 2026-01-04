@@ -1,0 +1,132 @@
+.faq-page {
+  max-width: 420px;
+  margin: auto;
+  padding: 24px;
+  font-family: 'Inter', sans-serif;
+  background: #f9fafb;
+  min-height: 100vh;
+}
+
+/* Header */
+.faq-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.faq-header h1 {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+/* Search */
+.search-box input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: none;
+  background: #f1f5f9;
+  font-size: 14px;
+  outline: none;
+  margin-bottom: 28px;
+}
+
+/* Title */
+.faq-title h2 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.faq-title p {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+/* FAQ Cards */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.faq-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.faq-card:hover {
+  transform: scale(1.02);
+}
+
+.faq-card.active {
+  border-color: #38bdf8;
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.25);
+}
+
+/* Question */
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.arrow {
+  font-size: 14px;
+  color: #38bdf8;
+}
+
+/* Answer */
+.faq-answer {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+/* Submit */
+.submit-box {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.submit-box p {
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.submit-box input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 12px;
+}
+
+.submit-box button {
+  width: 100%;
+  padding: 14px;
+  background: #0ea5e9;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.submit-box button:hover {
+  background: #0284c7;
+}
+
+.success {
+  margin-top: 12px;
+  color: #16a34a;
+  font-weight: 600;
+}

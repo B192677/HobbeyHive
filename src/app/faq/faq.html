@@ -1,0 +1,57 @@
+<div class="faq-page">
+
+  <!-- Header -->
+  <div class="faq-header">
+    <h1>Help & Support</h1>
+  </div>
+
+  <!-- Search -->
+  <div class="search-box">
+    <input type="text" placeholder="Search for help" />
+  </div>
+
+  <!-- Title -->
+  <div class="faq-title">
+    <h2>Frequently Asked Questions</h2>
+    <p>Here are the most common questions about our workshops.</p>
+  </div>
+
+  <!-- FAQ List -->
+  <div class="faq-list">
+    <div
+      class="faq-card"
+      *ngFor="let f of faqs; let i = index"
+      [class.active]="activeIndex === i"
+      (click)="toggle(i)"
+    >
+      <div class="faq-question">
+        <span>{{ f.q }}</span>
+        <span class="arrow">{{ activeIndex === i ? '▲' : '▼' }}</span>
+      </div>
+
+      <div class="faq-answer" *ngIf="activeIndex === i">
+        {{ f.a }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit Question -->
+  <div class="submit-box">
+    <p>Can’t find what you’re looking for?</p>
+
+    <form (ngSubmit)="submitQuestion()">
+      <input
+        type="text"
+        [(ngModel)]="question"
+        name="question"
+        placeholder="Ask a question"
+      />
+      <button type="submit">Submit a Question</button>
+    </form>
+
+    <p class="success" *ngIf="submitted">
+      ✅ Your question has been submitted
+    </p>
+  </div>
+
+</div>

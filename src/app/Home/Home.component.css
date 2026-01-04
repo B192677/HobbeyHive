@@ -1,0 +1,172 @@
+/* HERO SECTION */
+.hero {
+  position: relative;
+  background-image: url('/images/forimages.jpg');
+  background-size: 100% 100%; /* stretch image */
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 1600px;
+  height: 600px;
+  margin: 40px auto;
+  border-radius: var(--radius);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Button at bottom-left of hero */
+.hero .primary-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  padding: 22px 44px;
+  font-weight: 600;
+  border-radius: var(--radius);
+  border: none;
+  color: white;
+  background-color: rgb(228, 158, 8);
+  cursor: pointer;
+}
+
+/* SECTION HEADER */
+.section-header {
+  margin-left: 40px;
+  margin-bottom: 24px;
+}
+
+/* WORKSHOP GRID */
+.workshop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 0 40px 40px;
+}
+
+/* WORKSHOP CARD */
+.workshop-card {
+  position: relative; /* for badge positioning */
+  background: white;
+  padding: 24px;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.workshop-card:hover {
+  transform: translateY(-5px);
+}
+
+/* BADGE top-right */
+.badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #e0f2fe;
+  color: #151515;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* META INFO */
+.meta {
+  color: var(--text-muted, #666);
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+/* CARD FOOTER */
+.card-footer {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none; /* remove black */
+}
+
+/* VIEW DETAILS BUTTON inside cards */
+.secondary-btn {
+  background-color: rgb(228, 158, 8);
+  cursor: pointer;
+  border-radius: var(--radius);
+  border: none;
+  padding: 8px 14px;
+  color: white;
+  font-weight: 600;
+}
+
+/* SEATS LEFT */
+.seats {
+  font-weight: 600;
+  color: #059669;
+}
+
+/* SITE FOOTER */
+.footer {
+  background: #0f172a;
+  color: #cbd5f5;
+  padding: 50px 20px 20px;
+  margin-top: 60px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.footer-section h3 {
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.footer-section ul li a {
+  color: #cbd5f5;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #38bdf8;
+}
+
+.brand h2 {
+  color: #fff;
+  font-size: 26px;
+}
+
+.brand span {
+  color: #4a90e2;
+}
+
+.brand p {
+  font-size: 14px;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.footer-bottom {
+  border-top: 1px solid #1e293b;
+  text-align: center;
+  padding-top: 15px;
+  margin-top: 40px;
+  font-size: 14px;
+}

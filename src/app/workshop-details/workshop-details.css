@@ -1,0 +1,112 @@
+/* Page wrapper */
+.workshop-details {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Title */
+.workshop-details h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #2c2c2c;
+  text-align: center;
+}
+
+/* Image */
+.workshop-details img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 25px;
+}
+
+/* Description */
+.workshop-details .description {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+/* Info section */
+.workshop-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.workshop-info p {
+  background: #f5f7fa;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 15px;
+  color: #333;
+  flex: 1 1 200px;
+}
+
+/* Price highlight */
+.price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ff6b35;
+}
+
+/* Button */
+.book-btn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #ff6b35, #ff914d);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  margin-top: 80px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .workshop-details {
+    padding: 20px;
+  }
+
+  .workshop-details h1 {
+    font-size: 26px;
+  }
+}

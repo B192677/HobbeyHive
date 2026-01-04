@@ -1,0 +1,120 @@
+.confirmation-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  font-family: Arial, sans-serif;
+  color: #1f2937;
+}
+
+.success-message {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.success-message .icon {
+  font-size: 3rem;
+  color: #16a34a;
+  margin-bottom: 1rem;
+}
+
+.success-message h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.success-message .highlight {
+  font-weight: bold;
+}
+
+.confirmation-card {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.booking-header {
+  background-color: #f3f4f6;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.booking-ref {
+  background-color: #ffffff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #d1d5db;
+}
+
+.card-body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.workshop-image {
+  flex: 1 1 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.workshop-details {
+  flex: 2 1 300px;
+  padding: 1rem;
+}
+
+.workshop-details h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.detail-row {
+  margin-bottom: 0.75rem;
+}
+
+.instructor-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.instructor-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.actions button {
+  padding: 8px 12px;   /* smaller padding */
+  border-radius: 4px;
+  border: none;
+  background-color: #3b82f6; /* Blue background */
+  color: white;              /* White text */
+  font-weight: 600;
+  font-size: 0.9rem;         /* smaller font */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.actions button:hover {
+  background-color: #2563eb; /* Darker blue on hover */
+}
+
+
+
+.support-note {
+  text-align: center;
+  font-size: 0.875rem;
+  margin: 1rem 0;
+}

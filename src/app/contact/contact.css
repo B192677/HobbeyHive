@@ -1,0 +1,170 @@
+.contact-container {
+  padding: 40px;
+  background: #f6f7f8;
+}
+
+/* HERO */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.hero-text h1 {
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.hero-text p {
+  max-width: 520px;
+  color: #475569;
+  font-size: 18px;
+}
+
+.badge {
+  color: #137fec;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+/* Update buttons inside .actions */
+.actions button {
+  padding: 16px 32px;          /* increased size */
+  font-size: 16px;             /* bigger text */
+  font-weight: 600;
+  border-radius: 50px;         /* keeps the rounded pill style */
+  border: none;
+  color: white;
+  background-color: #4a90e2;   /* new background color */
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.actions button:hover {
+  background-color: #357ab8;   /* slightly darker on hover */
+  transform: translateY(-2px); /* subtle lift effect */
+}
+
+.hero-image {
+  height: 280px;
+  border-radius: 16px;
+  background: #e2e8f0;
+}
+
+/* GRID */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+}
+
+/* INFO */
+.info h2 {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.info p {
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+.info-card {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+/* FORM */
+.form-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.form-card h2 {
+  margin-bottom: 6px;
+}
+
+.form-card p {
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #cbd5f5;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+textarea {
+  min-height: 140px;
+}
+
+/* BUTTONS */
+.primary {
+  background: #137fec;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.secondary {
+  background: #eaf2ff;
+  color: #137fec;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.submit {
+  margin-top: 10px;
+}
+
+/* HELP */
+.help {
+  margin-top: 60px;
+  background: #eaf2ff;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero,
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-image {
+    height: 220px;
+  }
+}

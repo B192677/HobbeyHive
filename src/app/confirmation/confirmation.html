@@ -1,0 +1,13 @@
+<div *ngIf="loading">
+  Loading booking details...
+</div>
+
+<div *ngIf="!loading && booking">
+  <h2>Booking Confirmed! 🎉</h2>
+  <p><strong>Booking ID:</strong> {{ booking.id }}</p>
+  <p><strong>Workshop:</strong> {{ booking.title }}</p>
+  <p><strong>Price:</strong> ₹{{ booking.price }}</p>
+  <p><strong>User:</strong> {{ booking.userName }} ({{ booking.userEmail }})</p>
+
+  <button (click)="router.navigate(['/explore'])">Back to Explore</button>
+</div>
