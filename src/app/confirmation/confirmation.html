@@ -1,13 +1,82 @@
-<div *ngIf="loading">
-  Loading booking details...
-</div>
+<div class="confirmation-container">
 
-<div *ngIf="!loading && booking">
-  <h2>Booking Confirmed! 🎉</h2>
-  <p><strong>Booking ID:</strong> {{ booking.id }}</p>
-  <p><strong>Workshop:</strong> {{ booking.title }}</p>
-  <p><strong>Price:</strong> ₹{{ booking.price }}</p>
-  <p><strong>User:</strong> {{ booking.userName }} ({{ booking.userEmail }})</p>
+  <!-- Loading -->
+  <div *ngIf="loading">
+    Loading booking details...
+  </div>
 
-  <button (click)="router.navigate(['/explore'])">Back to Explore</button>
+  <!-- Success Content -->
+  <div *ngIf="!loading && booking">
+
+    <!-- Success Message -->
+    <div class="success-message">
+      <div class="icon">🎉</div>
+      <h2>Booking Confirmed!</h2>
+      <p class="highlight">
+        Thank you {{ booking.userName }}, your booking was successful.
+      </p>
+    </div>
+
+    <!-- Confirmation Card -->
+    <div class="confirmation-card">
+
+      <!-- Header -->
+      <div class="booking-header">
+        <span>Booking Details</span>
+        <span class="booking-ref">ID: {{ booking.id }}</span>
+      </div>
+
+      <!-- Body -->
+      <div class="card-body">
+
+        <!-- Workshop Image -->
+        <div
+          class="workshop-image"
+          [style.backgroundImage]="'url(' + booking.imageUrl + ')'"
+        ></div>
+
+        <!-- Workshop Details -->
+        <div class="workshop-details">
+          <h3>{{ booking.title }}</h3>
+
+          <div class="detail-row">
+            <strong>Price:</strong> ₹{{ booking.price }}
+          </div>
+
+          <div class="detail-row">
+            <strong>User:</strong> {{ booking.userName }}
+          </div>
+
+          <div class="detail-row">
+            <strong>Email:</strong> {{ booking.userEmail }}
+          </div>
+
+          <div class="detail-row instructor-info">
+            <div
+              class="instructor-image"
+              [style.backgroundImage]="'url(' + booking.instructorImage + ')'"
+            ></div>
+            <span>{{ booking.instructorName }}</span>
+          </div>
+
+          <!-- Actions -->
+          <div class="actions">
+            <button (click)="router.navigate(['/explore'])">
+              Back to Explore
+            </button>
+            <button (click)="router.navigate(['/my-bookings'])">
+              My Bookings
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Support -->
+    <div class="support-note">
+      Need help? Contact support@hobbyhive.com
+    </div>
+
+  </div>
 </div>
