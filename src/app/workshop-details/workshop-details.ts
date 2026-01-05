@@ -85,4 +85,11 @@ export class WorkshopDetails implements OnInit {
       }
     });
   }
+
+  // ✅ Minimal logout method
+  logout(): void {
+    this.auth.logout();             // clear session / localStorage
+    this.router.navigate(['/login']); // redirect to login page
+  }
+
 }

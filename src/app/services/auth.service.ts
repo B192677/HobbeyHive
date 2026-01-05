@@ -1,60 +1,43 @@
 import { Injectable } from '@angular/core';
-
-export interface User {
-  name: string;
-  email: string;
-  password: string;
-}
+import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private users: User[] = [
-    { name: 'Test User', email: 'test@example.com', password: '123456' },
-    { name: 'Hello User', email: 'hello@world.com', password: 'password' }
-  ];
+  private baseUrl = 'http://localhost:8080/api/auth';
 
-  private currentUser: User | null = null;
+  constructor(private http: HttpClient) {}
 
-  // ✅ LOGIN with status
-  login(
-    email: string,
-    password: string
-  ): 'success' | 'wrong-password' | 'no-user' {
-
-    const user = this.users.find(u => u.email === email);
-
-    if (!user) {
-      return 'no-user';
-    }
-
-    if (user.password !== password) {
-      return 'wrong-password';
-    }
-
-    this.currentUser = user;
-    return 'success';
+  // 🔹 REGISTER
+  register(data: any) {
+    return this.http.post(`${this.baseUrl}/register`, data);
   }
 
-  // ✅ REGISTER
-  register(user: User): boolean {
-    const exists = this.users.find(u => u.email === user.email);
-    if (exists) {
-      return false;
-    }
-    this.users.push(user);
-    return true;
+  // 🔹 LOGIN
+  login(data: any) {
+    return this.http
+      .post(`${this.baseUrl}/login`, data, { responseType: 'text' })
+      .pipe(
+        tap((res: string) => {
+          // ✅ login success ayithe user ni store cheyyi
+          if (res === 'Login successful') {
+            localStorage.setItem('user', JSON.stringify(data));
+          }
+        })
+      );
   }
 
-  // ✅ THIS WAS MISSING (ERROR FIX)
-  getUser(): User | null {
-    return this.currentUser;
+  // 🔹 GET LOGGED-IN USER  ✅ (THIS FIXES YOUR ERROR)
+  getUser() {
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
   }
 
-  // ✅ LOGOUT
-  logout(): void {
-    this.currentUser = null;
+  // 🔹 LOGOUT (optional but useful)
+  logout() {
+    localStorage.removeItem('user');
   }
 }

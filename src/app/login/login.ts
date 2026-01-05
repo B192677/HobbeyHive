@@ -14,10 +14,13 @@ import { AuthService } from '../services/auth.service';
 export class Login {
 
   email = '';
-  password='';
+  password = '';
   showPassword = false;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) {}
 
   togglePassword() {
     this.showPassword = !this.showPassword;
@@ -25,24 +28,33 @@ export class Login {
 
   loginUser() {
 
-  if (!this.email || !this.password) {
-    alert('Please enter email and password');
-    return;
+    if (!this.email || !this.password) {
+      alert('Please enter email and password');
+      return;
+    }
+
+    // ✅ BACKEND LOGIN CALL
+    this.auth.login({
+      email: this.email,
+      password: this.password
+    }).subscribe({
+      next: (res: string) => {
+
+        if (res === 'Login successful') {
+          alert('Login successful!');
+          this.router.navigate(['/explore']);
+
+        } else if (res === 'Invalid password') {
+          alert('Wrong password. Please try again.');
+
+        } else {
+          alert('No account found. Please register.');
+          this.router.navigate(['/register']);
+        }
+      },
+      error: () => {
+        alert('Login failed');
+      }
+    });
   }
-
-  const result = this.auth.login(this.email, this.password);
-
-  if (result === 'success') {
-    alert('Login successful!');
-    this.router.navigate(['/explore']);
-
-  } else if (result === 'wrong-password') {
-    alert('Wrong password. Please try again.');
-
-  } else {
-    alert('No account found. Please register.');
-    this.router.navigate(['/register']);
-  }
-}
-
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { WorkshopService } from '../services/workshop.service';
+import { AuthService } from '../services/auth.service';   // ✅ ADD
 
 @Component({
   selector: 'app-explore',
@@ -18,11 +19,19 @@ export class Explore implements OnInit {
 
   constructor(
     private workshopService: WorkshopService,
+    private auth: AuthService,        // ✅ ADD
     private router: Router,
-    private cdr: ChangeDetectorRef   // ✅ ADD THIS
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
+    // 🔒 User login check
+    const user = this.auth.getUser();
+    if (!user) {
+      this.router.navigate(['/login']);
+      return;
+    }
+
     this.loadWorkshops();
   }
 
@@ -33,8 +42,6 @@ export class Explore implements OnInit {
       next: (data) => {
         this.workshops = data;
         this.loading = false;
-
-       
         this.cdr.detectChanges();
       },
       error: (err) => {
@@ -47,5 +54,12 @@ export class Explore implements OnInit {
 
   openWorkshop(id: number): void {
     this.router.navigate(['/workshop', id]);
+  }
+
+  // 🚪 LOGOUT FUNCTION
+  logout(): void {
+    this.auth.logout();
+    alert('Logged out successfully');
+    this.router.navigate(['/login']);
   }
 }

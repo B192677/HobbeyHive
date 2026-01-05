@@ -1,5 +1,7 @@
 <div class="workshop-details">
 
+  <!-- Optional LOGOUT button (top-right) -->
+
   <!-- Loading -->
   <div *ngIf="loading" class="loading">
     Loading workshop details...
@@ -10,7 +12,7 @@
 
     <h1>{{ workshop.title }}</h1>
 
-    <!-- Image (optional, image unte mathrame show) -->
+    <!-- Image -->
     <img
       *ngIf="workshop.imageUrl"
       [src]="workshop.imageUrl"
@@ -22,13 +24,10 @@
     </p>
 
     <div class="workshop-info">
-      <p>
-        <strong>Workshop ID:</strong> {{ workshop.id }}
-      </p>
-
-      <p class="price">
-        ₹{{ workshop.price }}
-      </p>
+      <p><strong>Workshop ID:</strong> {{ workshop.id }}</p>
+      <p class="price">₹{{ workshop.price }}</p>
+      <p *ngIf="workshop.date"><strong>Date:</strong> {{ workshop.date | date }}</p>
+      <p *ngIf="workshop.location"><strong>Location:</strong> {{ workshop.location }}</p>
     </div>
 
     <button class="book-btn" type="button" (click)="bookWorkshop()">

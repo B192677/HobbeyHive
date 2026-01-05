@@ -21,7 +21,10 @@ export class Register {
   showPassword = false;
   acceptedTerms = false;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) {}
 
   togglePassword() {
     this.showPassword = !this.showPassword;
@@ -44,14 +47,19 @@ export class Register {
       return;
     }
 
-    // ✅ SAVE USER
+    // ✅ BACKEND KI SAVE
     this.auth.register({
       name: this.name,
       email: this.email,
       password: this.password
+    }).subscribe({
+      next: () => {
+        alert('Registration successful! Please login.');
+        this.router.navigate(['/login']);
+      },
+      error: () => {
+        alert('Registration failed');
+      }
     });
-
-    alert('Registration successful! Please login.');
-    this.router.navigate(['/login']);
   }
 }
