@@ -1,0 +1,38 @@
+<!-- <div class="my-bookings-container">
+  <h1>My Bookings</h1>
+
+  <div *ngIf="loading">Loading your bookings...</div>
+  <div *ngIf="!loading && bookings.length === 0">No bookings found.</div>
+
+  <div *ngIf="!loading && bookings.length > 0">
+    <div *ngFor="let booking of bookings" class="booking-card">
+      <div class="workshop-image">
+        <img [src]="booking.image" alt="{{ booking.title }}" />
+      </div>
+      <div class="workshop-info">
+        <h3>{{ booking.title }}</h3>
+        <p>Price: ₹{{ booking.price }}</p>
+        <p>Date: {{ booking.date }}</p>
+        <p>Location: {{ booking.location }}</p>
+        <a [routerLink]="['/confirmation', booking.id]">View Details</a>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="my-bookings-container">
+  <h1>My Bookings</h1>
+
+  <div *ngIf="loading">Loading your bookings...</div>
+  <div *ngIf="!loading && bookings.length === 0">No bookings found.</div>
+
+  <div *ngIf="!loading && bookings.length > 0">
+    <div *ngFor="let booking of bookings" class="booking-card">
+      <div class="workshop-info">
+        <h3>{{ booking.title }}</h3>
+        <p>Price: ₹{{ booking.price }}</p>
+        <p>Workshop ID: {{ booking.workshopId }}</p>
+        <p>User: {{ booking.userName }} ({{ booking.userEmail }})</p>
+      </div>
+    </div>
+  </div>
+</div>

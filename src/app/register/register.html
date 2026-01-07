@@ -1,17 +1,15 @@
 <div class="login-container">
   <div class="login-card">
 
-    <!-- LEFT : IMAGE -->
+    <!-- LEFT IMAGE -->
     <div class="login-image">
       <img src="images/painting.jpg" alt="Workshop Image">
-
       <div class="overlay">
         <blockquote>
           <p>
             "The beautiful thing about learning is that nobody can take it away from you."
           </p>
         </blockquote>
-
         <div class="quote-author">
           <div class="line"></div>
           <span>B.B. King</span>
@@ -19,7 +17,7 @@
       </div>
     </div>
 
-    <!-- RIGHT : FORM -->
+    <!-- RIGHT FORM -->
     <div class="login-form">
 
       <div class="branding">
@@ -32,15 +30,15 @@
 
       <form (ngSubmit)="registerUser()">
 
-        <!-- FULL NAME -->
+        <!-- NAME -->
         <div class="floating-group">
-          <input type="text" [(ngModel)]="name" name="name" required autocomplete="name"/>
+          <input type="text" [(ngModel)]="name" name="name" required />
           <label>Full Name</label>
         </div>
 
         <!-- EMAIL -->
         <div class="floating-group">
-          <input type="email" [(ngModel)]="email" name="email" required autocomplete="email"/>
+          <input type="email" [(ngModel)]="email" name="email" required />
           <label>Email Address</label>
         </div>
 
@@ -51,54 +49,64 @@
             [(ngModel)]="password"
             name="password"
             required
-            autocomplete="new-password"
           />
           <label>Password</label>
 
-          <button
-            type="button"
-            class="toggle-password"
-            (click)="togglePassword()"
-            tabindex="-1"
-          >
+          <button type="button" class="toggle-password" (click)="togglePassword()">
             <span class="material-symbols-outlined">
               {{ showPassword ? 'visibility_off' : 'visibility' }}
             </span>
           </button>
         </div>
 
+        <!-- PASSWORD ERROR -->
+        <p class="password-error" *ngIf="passwordInvalid">
+          Password must include <b>letters, numbers, and symbols</b>.
+        </p>
+
         <!-- CONFIRM PASSWORD -->
         <div class="floating-group password-wrapper">
           <input
-            type="password"
+            [type]="showConfirmPassword ? 'text' : 'password'"
             [(ngModel)]="confirmPassword"
             name="confirmPassword"
             required
-            autocomplete="new-password"
           />
           <label>Confirm Password</label>
+
+          <button type="button" class="toggle-password" (click)="toggleConfirmPassword()">
+            <span class="material-symbols-outlined">
+              {{ showConfirmPassword ? 'visibility_off' : 'visibility' }}
+            </span>
+          </button>
         </div>
 
         <!-- TERMS -->
         <div class="actions">
           <label class="remember">
             <input type="checkbox" [(ngModel)]="acceptedTerms" name="acceptedTerms" />
-            I agree to all the 
-            <a routerLink="/terms" class="terms-link">Terms and Conditions</a>
-            and
-            <a routerLink="/privacypolicy" class="privacy">Privacy Policy</a>
+            I agree to the
+            <a routerLink="/terms">Terms</a> &
+            <a routerLink="/privacypolicy">Privacy Policy</a>
           </label>
         </div>
 
-        <!-- SUBMIT BUTTON -->
+        <!-- SUBMIT -->
         <button type="submit" class="sign-in-btn">Create Account</button>
       </form>
 
-      <!-- LOGIN LINK -->
+      <!-- LOGIN -->
       <div class="signup">
-        <p>Already have an account? <a routerLink="/login">Login</a></p>
+        <p>Already have an account?
+          <a (click)="goToLogin()">Login</a>
+        </p>
       </div>
 
     </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" *ngIf="showPopup" [ngClass]="popupType">
+    {{ popupMessage }}
   </div>
 </div>

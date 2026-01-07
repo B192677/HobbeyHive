@@ -19,47 +19,100 @@ export class Register {
   confirmPassword = '';
 
   showPassword = false;
+  showConfirmPassword = false;
   acceptedTerms = false;
+
+  passwordInvalid = false;
+
+  // 🔹 Toast state
+  showPopup = false;
+  popupMessage = '';
+  popupType: 'success' | 'error' = 'success';
 
   constructor(
     private auth: AuthService,
     private router: Router
   ) {}
 
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
+
   togglePassword() {
     this.showPassword = !this.showPassword;
+  }
+
+  toggleConfirmPassword() {
+    this.showConfirmPassword = !this.showConfirmPassword;
+  }
+
+  // ✅ PASSWORD VALIDATION
+  isPasswordValid(password: string): boolean {
+    const hasLetter = /[a-zA-Z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSymbol = /[^a-zA-Z0-9]/.test(password);
+    return hasLetter && hasNumber && hasSymbol;
   }
 
   registerUser() {
 
     if (!this.name || !this.email || !this.password || !this.confirmPassword) {
-      alert('Please fill all details');
+      this.showError('Please fill all details');
       return;
     }
 
+    if (!this.isPasswordValid(this.password)) {
+      this.passwordInvalid = true;
+      return;
+    } else {
+      this.passwordInvalid = false;
+    }
+
     if (this.password !== this.confirmPassword) {
-      alert('Passwords do not match');
+      this.showError('Passwords do not match');
       return;
     }
 
     if (!this.acceptedTerms) {
-      alert('Please accept terms and conditions');
+      this.showError('Please accept terms and conditions');
       return;
     }
 
-    // ✅ BACKEND KI SAVE
     this.auth.register({
       name: this.name,
       email: this.email,
       password: this.password
     }).subscribe({
       next: () => {
-        alert('Registration successful! Please login.');
-        this.router.navigate(['/login']);
+        this.showSuccess('Registration successful! Redirecting to login...');
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 5000);
       },
       error: () => {
-        alert('Registration failed');
+        this.showError('Registration failed. Try again.');
       }
     });
+  }
+
+  // 🔹 Toast helpers
+  showSuccess(msg: string) {
+    this.popupType = 'success';
+    this.popupMessage = msg;
+    this.showPopup = true;
+    this.autoClose();
+  }
+
+  showError(msg: string) {
+    this.popupType = 'error';
+    this.popupMessage = msg;
+    this.showPopup = true;
+    this.autoClose();
+  }
+
+  autoClose() {
+    setTimeout(() => {
+      this.showPopup = false;
+    }, 5000);
   }
 }

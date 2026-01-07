@@ -1,10 +1,11 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WorkshopService } from '../services/workshop.service';
 import { BookingService } from '../services/booking.service';
-import { AuthService } from '../services/auth.service'; // 👈 Import AuthService
+import { AuthService } from '../services/auth.service';
+import { Workshop } from '../models/workshop';
 
 @Component({
   selector: 'app-workshop-details',
@@ -15,50 +16,46 @@ import { AuthService } from '../services/auth.service'; // 👈 Import AuthServi
 })
 export class WorkshopDetails implements OnInit {
 
-  workshop: any;
+  workshop!: Workshop;
   loading = true;
+  errorMessage = '';
 
   constructor(
     private route: ActivatedRoute,
     private workshopService: WorkshopService,
     private bookingService: BookingService,
+    private authService: AuthService,
     private router: Router,
-    private cdr: ChangeDetectorRef,
-    private auth: AuthService // 👈 Inject AuthService
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (!id) {
-      console.error('No workshop ID provided');
       this.router.navigate(['/explore']);
       return;
     }
 
-    // 🔹 Load workshop details
     this.workshopService.getWorkshopById(id).subscribe({
-      next: (data) => {
+      next: (data: Workshop) => {
         this.workshop = data;
         this.loading = false;
         this.cdr.detectChanges();
       },
-      error: (err) => {
+      error: (err: any) => {
         console.error('Error fetching workshop:', err);
+        this.errorMessage = 'Failed to load workshop details.';
         this.loading = false;
-        this.cdr.detectChanges();
       }
     });
   }
 
   bookWorkshop() {
-    if (!this.workshop) {
-      alert('Workshop not loaded yet');
-      return;
-    }
+    if (!this.workshop) return;
 
-    const user = this.auth.getUser(); // 🔹 Get logged-in user
+    const user = this.authService.getUser();
     if (!user) {
-      alert('Please login first');
+      alert('You must be logged in to book a workshop.');
       this.router.navigate(['/login']);
       return;
     }
@@ -67,29 +64,20 @@ export class WorkshopDetails implements OnInit {
       workshopId: this.workshop.id,
       title: this.workshop.title,
       price: this.workshop.price,
-      userName: user.name,   // 🔹 Use logged-in user
-      userEmail: user.email  // 🔹 Use logged-in user email
+      duration: this.workshop.duration,
+      userName: user.name,
+      userEmail: user.email
     };
 
-    // 🔹 Save booking in backend
     this.bookingService.createBooking(booking).subscribe({
-      next: (savedBooking) => {
-        console.log('Booking saved with ID:', savedBooking.id);
-
-        // 🔹 Navigate to payment page immediately after saving
+      next: (savedBooking: any) => {
+        console.log('Booking saved:', savedBooking);
         this.router.navigate(['/payment', savedBooking.id]);
       },
-      error: (err) => {
+      error: (err: any) => {
         console.error('Booking failed:', err);
-        alert('Booking could not be created. Try again.');
+        alert('Booking failed. Please try again.');
       }
     });
   }
-
-  // ✅ Minimal logout method
-  logout(): void {
-    this.auth.logout();             // clear session / localStorage
-    this.router.navigate(['/login']); // redirect to login page
-  }
-
 }

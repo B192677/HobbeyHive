@@ -1,7 +1,7 @@
 <div class="confirmation-container">
 
   <!-- Loading -->
-  <div *ngIf="loading">
+  <div *ngIf="loading" class="loading">
     Loading booking details...
   </div>
 
@@ -13,7 +13,7 @@
       <div class="icon">🎉</div>
       <h2>Booking Confirmed!</h2>
       <p class="highlight">
-        Thank you {{ booking.userName }}, your booking was successful.
+        Thank you {{ userName }}, your booking was successful.
       </p>
     </div>
 
@@ -30,10 +30,7 @@
       <div class="card-body">
 
         <!-- Workshop Image -->
-        <div
-          class="workshop-image"
-          [style.backgroundImage]="'url(' + booking.imageUrl + ')'"
-        ></div>
+        
 
         <!-- Workshop Details -->
         <div class="workshop-details">
@@ -44,31 +41,24 @@
           </div>
 
           <div class="detail-row">
-            <strong>User:</strong> {{ booking.userName }}
+            <strong>User:</strong> {{ userName }}
           </div>
 
           <div class="detail-row">
             <strong>Email:</strong> {{ booking.userEmail }}
           </div>
 
-          <div class="detail-row instructor-info">
-            <div
-              class="instructor-image"
-              [style.backgroundImage]="'url(' + booking.instructorImage + ')'"
-            ></div>
-            <span>{{ booking.instructorName }}</span>
-          </div>
-
+         
           <!-- Actions -->
           <div class="actions">
-            <button (click)="router.navigate(['/explore'])">
-              Back to Explore
-            </button>
-            <button (click)="router.navigate(['/my-bookings'])">
-              My Bookings
-            </button>
-          </div>
-        </div>
+  <button (click)="goToExplore()">
+    Back to Explore
+  </button>
+
+ 
+</div>
+
+
 
       </div>
     </div>

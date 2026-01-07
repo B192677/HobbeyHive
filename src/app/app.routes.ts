@@ -13,6 +13,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy';
 import { TermsComponent } from './termsandconditions/termsandconditions';
 import { AboutUs } from './about-us/about-us';
 import { ConfirmationComponent } from './confirmation/confirmation';
+import { MyBookingsComponent } from './mybookings/mybookings';
 
 export const routes: Routes = [
 
@@ -26,6 +27,7 @@ export const routes: Routes = [
     component: MainLayout,
     children: [
       { path: '', component: HomeComponent },
+      
       { path: 'explore', component: Explore },
       { path: 'features', component: FeaturesComponent },
       { path: 'workshop/:id', component: WorkshopDetails },
@@ -35,7 +37,8 @@ export const routes: Routes = [
       { path: 'contact', component: ContactComponent },
       { path: 'privacypolicy', component: PrivacyPolicyComponent },
       { path: 'terms', component: TermsComponent },
-      { path: 'aboutus', component: AboutUs }
+      { path: 'aboutus', component: AboutUs },
+      { path: 'my-bookings', component: MyBookingsComponent }
     ]
   },
 

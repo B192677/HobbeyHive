@@ -1,12 +1,6 @@
-<!-- Hero -->
 <div class="explore-hero">
-  <h1>Welcome to HobbyHive</h1>
-  <p>Choose a hobby you love</p>
-
-  <!-- LOGOUT BUTTON -->
-  <button class="logout-btn" (click)="logout()">
-    Logout
-  </button>
+  <h1>Explore Workshops</h1>
+  <p>Discover workshops, activities, and passions you'll love</p>
 </div>
 
 <!-- Loading -->
@@ -17,21 +11,27 @@
   No workshops available
 </p>
 
-<!-- Cards -->
+<!-- Workshop Cards -->
 <div class="explore-grid" *ngIf="!loading && workshops.length > 0">
   <div class="cards-container">
-
     <div class="card" *ngFor="let w of workshops">
-      <img [src]="w.image" alt="{{ w.title }}" />
+      <!-- Category Badge -->
+      
 
-      <h3>{{ w.title }}</h3>
-      <p>{{ w.description }}</p>
+      <div class="card-content">
+        <h3>{{ w.title }}</h3>
 
-      <div class="card-buttons">
-        <button class="view" (click)="openWorkshop(w.id)">View</button>
-        <button class="add" (click)="openWorkshop(w.id)">Add</button>
+        <div class="details">
+          <span class="date">📅 {{ w.date }}  {{ w.time }}</span>
+          <span class="location">📍 {{ w.location }}</span>
+         
+        </div>
+
+        <p>{{ w.description }}</p>
+
+        <button class="book-btn" (click)="openWorkshop(w.id)">View Details</button>
       </div>
     </div>
-
   </div>
-</div>
+
+  

@@ -33,14 +33,14 @@
 //   ];
 // }
 import { Component } from '@angular/core';
-import { NgFor } from '@angular/common';
-import { RouterLink  } from '@angular/router';
+import { CommonModule, NgFor } from '@angular/common';
+import { RouterLink, RouterModule  } from '@angular/router';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [NgFor, RouterLink ],
+  imports: [NgFor, RouterLink,CommonModule,RouterModule ],
   templateUrl: './Home.component.html',
   styleUrls: ['./Home.component.css']
 })

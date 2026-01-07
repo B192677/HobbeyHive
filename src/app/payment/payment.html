@@ -1,7 +1,7 @@
 <div class="payment-container">
 
   <!-- Loading -->
-  <div *ngIf="loading">
+  <div *ngIf="loading" class="loading">
     Loading booking details...
   </div>
 
@@ -31,40 +31,61 @@
 
         <form (ngSubmit)="payNow()">
 
+          <!-- Card Holder Name -->
           <input
             type="text"
             [(ngModel)]="cardName"
             name="cardName"
             placeholder="Card Holder Name"
             required
+            class="card-input"
           />
 
+          <!-- Card Number -->
           <input
             type="text"
             [(ngModel)]="cardNumber"
             name="cardNumber"
+            maxlength="16"
             placeholder="Card Number"
+            inputmode="numeric"
+            (input)="cardNumber = cardNumber.replace(/[^0-9]/g, '')"
             required
+            class="card-input"
           />
 
+          <!-- Expiry and CVV in a row -->
           <div class="expiry-cvc">
-            <input
-              type="text"
-              [(ngModel)]="expiry"
-              name="expiry"
-              placeholder="Expiry MM/YY"
-              required
-            />
 
+          <input
+  type="text"
+  [(ngModel)]="expiry"
+  name="expiry"
+  maxlength="5"
+  placeholder="MM/YY"
+  inputmode="numeric"
+  (input)="formatExpiry()"
+  required
+  class="card-input"
+/>
+
+
+            <!-- CVV -->
             <input
-              type="text"
+              type="password"
               [(ngModel)]="cvv"
               name="cvv"
+              maxlength="3"
               placeholder="CVV"
+              inputmode="numeric"
+              (input)="cvv = cvv.replace(/[^0-9]/g, '')"
               required
+              class="card-input"
             />
+
           </div>
 
+          <!-- Submit Button -->
           <button
             type="submit"
             class="complete-btn"
@@ -82,42 +103,8 @@
       </div>
 
       <!-- RIGHT : Summary -->
-      <div class="card summary">
-
-        <div class="image-wrapper">
-          <img
-            src="assets/images/workshop.jpg"
-            alt="Workshop"
-          />
-          <span class="tag">Workshop</span>
-        </div>
-
-        <h3>{{ booking.title }}</h3>
-        <p>Price per ticket</p>
-
-        <div class="cost-breakdown">
-          <div>
-            <span>Subtotal</span>
-            <span>₹{{ booking.price }}</span>
-          </div>
-          <div>
-            <span>Service Fee</span>
-            <span>₹0</span>
-          </div>
-        </div>
-
-        <div class="total">
-          <span>Total</span>
-          <span>₹{{ booking.price }}</span>
-        </div>
-
-        <span class="cancel-policy">
-          Cancellation policy applies
-        </span>
-
-      </div>
+      <!-- keep your existing summary code here -->
 
     </div>
   </div>
-
 </div>

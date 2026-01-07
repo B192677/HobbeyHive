@@ -5,11 +5,30 @@
   </div>
 
   <nav>
-    <a routerLink="/" routerLinkActive="active">Home</a>
-    <a routerLink="/explore" routerLinkActive="active">Explore</a>
-    <a routerLink="/features" routerLinkActive="active">Features</a>
-    <a routerLink="/faq" routerLinkActive="active">FAQ</a>
-    <a routerLink="/login" class="login-btn">Login</a>
+
+    <a routerLink="/">Home</a>
+    <a routerLink="/explore">Explore</a>
+    <a routerLink="/features">Features</a>
+    <a routerLink="/faq">FAQ</a>
+
+    <ng-container *ngIf="user; else loginBtn">
+
+      <div class="user-info" (click)="toggleDropdown()">
+        <div class="avatar">
+          {{ getFirstLetter() | uppercase }}
+        </div>
+      </div>
+
+      <div *ngIf="showDropdown" class="logout-dropdown">
+        <button routerLink="/my-bookings">My Bookings</button>
+        <button (click)="logout()">Logout</button>
+      </div>
+
+    </ng-container>
+
+    <ng-template #loginBtn>
+      <a routerLink="/login" class="login-btn">Login</a>
+    </ng-template>
+
   </nav>
 </header>
-

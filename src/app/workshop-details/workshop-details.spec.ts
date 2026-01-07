@@ -1,9 +1,10 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { WorkshopService } from '../services/workshop.service';
 import { BookingService } from '../services/booking.service';
-import { FormsModule } from '@angular/forms';
+import { Workshop } from '../models/workshop';
 
 @Component({
   selector: 'app-workshop-details',
@@ -14,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class WorkshopDetails implements OnInit {
 
-  workshop: any;
+  workshop!: Workshop;
   loading = true;
 
   constructor(
@@ -27,15 +28,16 @@ export class WorkshopDetails implements OnInit {
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-
     if (!id) {
       this.router.navigate(['/explore']);
       return;
     }
 
+    // 🔹 Fetch single workshop from backend
     this.workshopService.getWorkshopById(id).subscribe({
       next: (data) => {
         this.workshop = data;
+        console.log('Workshop image URL:', this.workshop.imageUrl); // Debug
         this.loading = false;
         this.cdr.detectChanges();
       },
@@ -53,20 +55,19 @@ export class WorkshopDetails implements OnInit {
       workshopId: this.workshop.id,
       title: this.workshop.title,
       price: this.workshop.price,
-      userName: 'Padma',
-      userEmail: 'padma@example.com'
+     duration: this.workshop.duration,
+      imageUrl: this.workshop.imageUrl,
+      userName: 'Padma',          // replace with actual logged-in user
+      userEmail: 'padma@example.com' // replace with actual logged-in user email
     };
 
-    // ✅ CORRECT METHOD NAME
     this.bookingService.createBooking(booking).subscribe({
       next: (savedBooking) => {
         console.log('Booking saved with ID:', savedBooking.id);
-
-        // ✅ Payment page ki REAL booking ID
         this.router.navigate(['/payment', savedBooking.id]);
       },
       error: (err) => {
-        console.error('Error creating booking:', err);
+        console.error('Booking failed:', err);
         alert('Booking failed. Try again.');
       }
     });

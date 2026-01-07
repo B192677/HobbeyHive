@@ -1,112 +1,186 @@
-/* Page wrapper */
-.workshop-details {
-  max-width: 1000px;
+.details-page {
+  max-width: 1200px;
   margin: 40px auto;
-  padding: 30px;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  animation: fadeIn 0.6s ease-in-out;
+  padding: 0 20px;
 }
 
-/* Title */
-.workshop-details h1 {
+/* Grid */
+.details-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+}
+
+/* LEFT */
+.left-section h1 {
   font-size: 32px;
   font-weight: 700;
-  margin-bottom: 20px;
-  color: #2c2c2c;
-  text-align: center;
+  margin: 20px 0;
+  color: #111;
 }
 
 /* Image */
-.workshop-details img {
+.image-wrapper {
+  position: relative;
+}
+
+.image-wrapper img {
   width: 100%;
-  max-height: 420px;
+  height: 420px;
   object-fit: cover;
-  border-radius: 14px;
-  margin-bottom: 25px;
+  border-radius: 16px;
+}
+
+.badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: #0d6efd;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Tags */
+.tags {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.tag {
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 20px;
+}
+
+.backend {
+  background: #e7f1ff;
+  color: #0d6efd;
+}
+
+.level {
+  background: #f3e8ff;
+  color: #7c3aed;
 }
 
 /* Description */
-.workshop-details .description {
-  font-size: 17px;
-  line-height: 1.7;
+.description {
+  font-size: 16px;
   color: #555;
+  line-height: 1.7;
   margin-bottom: 25px;
 }
 
-/* Info section */
-.workshop-info {
+/* Info Cards */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.info-card {
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.info-card strong {
+  display: block;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+/* RIGHT */
+.price-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 30px;
+}
+
+.price-label {
+  font-size: 14px;
+  color: #777;
+}
+
+.price {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 10px 0 20px;
+}
+
+.seats {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 30px;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
-.workshop-info p {
-  background: #f5f7fa;
-  padding: 12px 18px;
-  border-radius: 10px;
-  font-size: 15px;
-  color: #333;
-  flex: 1 1 200px;
+.seats-left {
+  color: #0d6efd;
+  font-weight: 600;
 }
 
-/* Price highlight */
-.price {
-  font-size: 22px;
-  font-weight: 700;
-  color: #ff6b35;
+/* Progress */
+.progress {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 20px;
+  margin-bottom: 25px;
+}
+
+.progress-fill {
+  width: 75%;
+  height: 100%;
+  background: #0d6efd;
+  border-radius: 20px;
 }
 
 /* Button */
 .book-btn {
-  display: center;
-  width: 100;
-  padding: 15px;
-  font-size: 18px;
-  font-weight: 600;
+  width: 100%;
+  padding: 14px;
+  background: #0d6efd;
   color: #fff;
-  background: linear-gradient(135deg, #358ddb, #0e51aa);
   border: none;
   border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .book-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(124, 190, 221, 0.4);
+  background: #084298;
+}
+
+.secure {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #777;
+  text-align: center;
 }
 
 /* Loading */
 .loading {
   text-align: center;
+  margin-top: 100px;
   font-size: 18px;
   color: #666;
-  margin-top: 80px;
-}
-
-/* Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .workshop-details {
-    padding: 20px;
+@media (max-width: 900px) {
+  .details-grid {
+    grid-template-columns: 1fr;
   }
 
-  .workshop-details h1 {
-    font-size: 26px;
+  .price-card {
+    position: static;
   }
 }

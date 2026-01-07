@@ -74,23 +74,35 @@ h1 {
   margin-bottom: 15px;
 }
 
+/* Rectified input styles: consistent for all text boxes */
 input[type='text'],
 input[type='email'],
-input[type='tel'] {
+input[type='tel'],
+input[type='password'],
+.cvvv {
   width: 100%;
-  padding: 10px 15px;
-  border: 1.5px solid #d7dbe7;
-  border-radius: 8px;
+  height: 40px;              /* consistent height */
+  padding: 10px 15px;        /* padding inside input */
+  border: 1.5px solid #d7dbe7; /* default border */
+  border-radius: 10px;       /* consistent radius */
   font-size: 1rem;
   margin-bottom: 15px;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-input[type='text']:focus,
-input[type='email']:focus,
-input[type='tel']:focus {
+/* Placeholder styling */
+input::placeholder,
+.cvvv::placeholder {
+  color: #7c7c7c;
+  opacity: 1;
+}
+
+/* Focus effect: consistent for all */
+input:focus,
+.cvvv:focus {
   border-color: #3b82f6;
+  box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
 }
 
 .payment-tabs {
@@ -125,6 +137,7 @@ input[type='tel']:focus {
   gap: 15px;
 }
 
+/* Ensure expiry and CVV inputs take equal width */
 .expiry-cvc input {
   flex: 1;
 }

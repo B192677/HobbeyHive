@@ -1,38 +1,79 @@
-<div class="workshop-details">
-
-  <!-- Optional LOGOUT button (top-right) -->
+<div class="details-page">
 
   <!-- Loading -->
   <div *ngIf="loading" class="loading">
     Loading workshop details...
   </div>
 
-  <!-- Workshop Content -->
-  <div *ngIf="!loading && workshop">
+  <!-- Content -->
+  <div *ngIf="!loading && workshop" class="details-grid">
 
-    <h1>{{ workshop.title }}</h1>
+    <!-- LEFT SECTION -->
+    <div class="left-section">
 
-    <!-- Image -->
-    <img
-      *ngIf="workshop.imageUrl"
-      [src]="workshop.imageUrl"
-      alt="{{ workshop.title }}"
-    />
+      <!-- Image -->
+      <div class="image-wrapper">
+        <span class="badge">FEATURED</span>
+        <img [src]="workshop.imageUrl" alt="{{ workshop.title }}">
+      </div>
 
-    <p class="description">
-      {{ workshop.description }}
-    </p>
+      <!-- Tags -->
+      
 
-    <div class="workshop-info">
-      <p><strong>Workshop ID:</strong> {{ workshop.id }}</p>
-      <p class="price">₹{{ workshop.price }}</p>
-      <p *ngIf="workshop.date"><strong>Date:</strong> {{ workshop.date | date }}</p>
-      <p *ngIf="workshop.location"><strong>Location:</strong> {{ workshop.location }}</p>
+      <!-- Title -->
+      <h1>{{ workshop.title }}</h1>
+
+      <!-- Description -->
+      <p class="description">
+        {{ workshop.description }}
+      </p>
+
+      <!-- Info Cards -->
+      <div class="info-grid">
+        <div class="info-card">
+          <strong>📅Date</strong>
+          <span>{{ workshop.date | date }}</span>
+        </div>
+        <div class="info-card">
+          <strong>⌛Duration</strong>
+         {{ workshop.duration }}
+
+        </div>
+        <div class="info-card">
+          <strong>🕐Time</strong>
+          <span>09:00 AM - 04:00 PM</span>
+        </div>
+        <div class="info-card">
+          <strong>📍Location</strong>
+          <span>{{ workshop.location }}</span>
+        </div>
+      </div>
     </div>
 
-    <button class="book-btn" type="button" (click)="bookWorkshop()">
-      Book Now
-    </button>
+    <!-- RIGHT SECTION -->
+    <div class="right-section">
+      <div class="price-card">
+        <p class="price-label">Price per person</p>
+        <h2 class="price">₹{{ workshop.price }}</h2>
+
+        <!-- <div class="seats">
+          <span>Seats Available</span>
+          <span class="seats-left">5 left</span>
+        </div>
+
+        <div class="progress">
+          <div class="progress-fill"></div>
+        </div> -->
+
+        <button class="book-btn" (click)="bookWorkshop()">
+          Book Now →
+        </button>
+
+        <p class="secure">
+          Secure payment • Instant confirmation
+        </p>
+      </div>
+    </div>
 
   </div>
 

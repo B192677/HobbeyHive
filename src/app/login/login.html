@@ -1,7 +1,7 @@
-<div class="login-container">
+<!-- <div class="login-container">
   <div class="login-card">
 
-    <!-- LEFT : IMAGE -->
+    
     <div class="login-image">
       <img src="images/painting.jpg" alt="Workshop Image">
 
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <!-- RIGHT : FORM -->
+   
     <div class="login-form">
 
       <div class="branding">
@@ -31,10 +31,10 @@
         <p><b>Please sign in to book or manage workshops.</b></p>
       </div>
 
-      <!-- ✅ FORM -->
+   
       <form (ngSubmit)="loginUser()">
 
-        <!-- EMAIL -->
+       
         <div class="floating-group">
           <input
             type="email"
@@ -45,7 +45,7 @@
           <label>Email Address</label>
         </div>
 
-        <!-- PASSWORD (UI only, backend check ledu ippudu) -->
+     
         <div class="floating-group password-wrapper">
           <input
             [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" name="password" placeholder="Password">
@@ -65,7 +65,7 @@
           </button>
         </div>
 
-        <!-- ACTIONS -->
+       
         <div class="actions">
           <label class="remember">
             <input type="checkbox"> Remember me
@@ -74,20 +74,104 @@
           <a class="forgot-password">Forgot password?</a>
         </div>
 
-        <!-- ✅ SUBMIT BUTTON -->
+      
         <button type="submit" class="sign-in-btn">
           Sign In
         </button>
       </form>
 
-      <!-- ✅ REGISTER LINK (THIS WILL WORK NOW) -->
+     
       <div class="signup">
         <p>
           Don't have an account?
-          <a routerLink="/register">Create account</a>
+    <a (click)="goToRegister()">Create account</a>
+
         </p>
       </div>
 
     </div>
+  </div>
+
+<div class="toast" *ngIf="showPopup" [ngClass]="popupType">
+  {{ popupMessage }}
+</div>
+
+
+</div> -->
+<div class="login-container">
+  <div class="login-card">
+
+    <!-- LEFT IMAGE -->
+    <div class="login-image">
+      <img src="images/painting.jpg" alt="Workshop Image">
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="login-form">
+
+      <h2>Hobby Hive</h2>
+      <p><b>Please sign in to book or manage workshops.</b></p>
+
+      <form (ngSubmit)="loginUser()">
+
+        <!-- EMAIL -->
+        <div class="floating-group">
+          <input
+            type="email"
+            [(ngModel)]="email"
+            name="email"
+            placeholder="Email"
+          />
+          <label>Email Address</label>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="floating-group password-wrapper">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            [(ngModel)]="password"
+            name="password"
+            placeholder="Password"
+            (input)="validatePassword()"
+          />
+
+          <label>Password</label>
+
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="togglePassword()"
+            tabindex="-1"
+          >
+            <span class="material-symbols-outlined">
+              {{ showPassword ? 'visibility_off' : 'visibility' }}
+            </span>
+          </button>
+        </div>
+
+        <!-- ❌ PASSWORD ERROR -->
+        <div class="password-error" *ngIf="passwordError">
+          {{ passwordError }}
+        </div>
+
+        <!-- SUBMIT -->
+        <button type="submit" class="sign-in-btn">
+          Sign In
+        </button>
+      </form>
+
+      <div class="signup">
+        <p>
+          Don't have an account?
+          <a (click)="goToRegister()">Create account</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" *ngIf="showPopup" [ngClass]="popupType">
+    {{ popupMessage }}
   </div>
 </div>

@@ -4,6 +4,8 @@ export interface Workshop {
   description: string;
   location: string;
   price: number;
+  duration:string;
   date: string;
   image: string;
+   imageUrl?: string; 
 }
