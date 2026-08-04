@@ -14,6 +14,8 @@ import { TermsComponent } from './termsandconditions/termsandconditions';
 import { AboutUs } from './about-us/about-us';
 import { ConfirmationComponent } from './confirmation/confirmation';
 import { MyBookingsComponent } from './mybookings/mybookings';
+import { AdminComponent } from './admin/admin';
+import { AdminloginComponent } from './adminlogin/adminlogin';
 
 export const routes: Routes = [
 
@@ -38,7 +40,9 @@ export const routes: Routes = [
       { path: 'privacypolicy', component: PrivacyPolicyComponent },
       { path: 'terms', component: TermsComponent },
       { path: 'aboutus', component: AboutUs },
-      { path: 'my-bookings', component: MyBookingsComponent }
+      { path: 'my-bookings', component: MyBookingsComponent },
+       { path: 'adminlogin', component: AdminloginComponent },
+      {path :'admin', component:AdminComponent}
     ]
   },
 

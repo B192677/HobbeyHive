@@ -19,6 +19,23 @@
     </div>
   </div>
 </div> -->
+<!-- <div class="my-bookings-container">
+  <h1>My Bookings</h1>
+
+  <div *ngIf="loading">Loading your bookings...</div>
+  <div *ngIf="!loading && bookings.length === 0">No bookings found.</div>
+
+  <div *ngIf="!loading && bookings.length > 0">
+    <div *ngFor="let booking of bookings" class="booking-card">
+      <div class="workshop-info">
+        <h3>{{ booking.title }}</h3>
+        <p>Price: ₹{{ booking.price }}</p>
+        <p>Workshop ID: {{ booking.workshopId }}</p>
+        <p>User: {{ booking.userName }} ({{ booking.userEmail }})</p>
+      </div>
+    </div>
+  </div> 
+</div>-->
 <div class="my-bookings-container">
   <h1>My Bookings</h1>
 
@@ -32,6 +49,11 @@
         <p>Price: ₹{{ booking.price }}</p>
         <p>Workshop ID: {{ booking.workshopId }}</p>
         <p>User: {{ booking.userName }} ({{ booking.userEmail }})</p>
+
+        <!-- ✅ Display cancellation message -->
+        <p *ngIf="booking.message" style="color:red; font-weight:bold;">
+          {{ booking.message }}
+        </p>
       </div>
     </div>
   </div>

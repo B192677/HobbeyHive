@@ -48,6 +48,8 @@
 //     return this.http.get<any[]>(`${this.baseUrl}/user/${email}`);
 //   }
 // }
+// 
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -61,17 +63,17 @@ export class BookingService {
 
   constructor(private http: HttpClient) {}
 
-  // ✅ CREATE a new booking
+  // Create a new booking
   createBooking(data: any): Observable<any> {
     return this.http.post<any>(this.baseUrl, data);
   }
 
-  // ✅ GET booking by ID (for confirmation/payment)
+  // Get booking by ID (for confirmation/payment)
   getBookingById(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${id}`);
   }
 
-  // ✅ GET all bookings for a specific user
+  // Get all bookings for a specific user
   getBookingsByUser(email: string): Observable<any[]> {
     const encodedEmail = encodeURIComponent(email);
     return this.http.get<any[]>(`${this.baseUrl}/user/${encodedEmail}`);

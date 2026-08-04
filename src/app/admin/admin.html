@@ -1,0 +1,72 @@
+<h2>Admin Dashboard</h2>
+
+<div class="tabs">
+  <button (click)="openUsers()">Users</button>
+  <button (click)="openBookings()">Bookings</button>
+</div>
+
+<!-- ================= USERS ================= -->
+<div *ngIf="showUsers">
+  <h3>User Details</h3>
+
+  <p *ngIf="users.length === 0">No users found</p>
+
+  <table *ngIf="users.length > 0">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Action</th>
+    </tr>
+
+    <tr *ngFor="let u of users">
+      <td>{{ u.id }}</td>
+      <td>{{ u.name }}</td>
+      <td>{{ u.email }}</td>
+      <td>{{ u.role }}</td>
+      <td>
+        <button (click)="deleteUser(u.id)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- ================= BOOKINGS ================= -->
+<div *ngIf="showBookings">
+  <h3>Booking Details</h3>
+
+  <p *ngIf="bookings.length === 0">No bookings found</p>
+
+  <table *ngIf="bookings.length > 0">
+    <tr>
+      <th>Booking ID</th>
+      <th>User</th>
+      <th>Workshop</th>
+      
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+
+    <tr *ngFor="let b of bookings">
+      <td>{{ b.id }}</td>
+
+      <!-- SAFE ACCESS (works for both ID & relation) -->
+      <td>{{ b.user?.userName || b.userName }}</td>
+      <td>{{ b.workshop?.id || b.workshopId }}</td>
+
+      
+      <td>{{ b.status }}</td>
+
+      <td>
+        <button
+          (click)="cancelBooking(b.id)"
+          [disabled]="b.status === 'CANCELLED'">
+          Cancel
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
